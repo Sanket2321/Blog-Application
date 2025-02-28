@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,8 +31,9 @@ public class User {
 	@Size(min = 4, message = "Username must be at least 4 characters")
 	private String name;
 
-	@Email(message = "Email address is not valid")
+	@Column(unique=true)
 	private String email;
+	
 	@NotEmpty(message = "Password must not be empty")
 	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d).+$", message = "Password must contain letters and at least one number")
 	private String password;

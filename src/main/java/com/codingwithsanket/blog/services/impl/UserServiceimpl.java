@@ -21,11 +21,29 @@ public class UserServiceimpl implements UserService {
 
 	@Override
 	public UserDto createUser(UserDto userDto) {
+		
+		// Check if the email already exists
+	    if (userRepo.findByEmail(userDto.getEmail()).isPresent()) {
+	        throw new RuntimeException("Email already exists!"); // Or use a custom exception
+	    }
 		User user = this.dtoToUser(userDto);
 		User savedUser = this.userRepo.save(user);
 		return this.userToDto(savedUser);
 
 	}
+	
+	@Override
+	public UserDto authenticateUser(String email, String password) {
+	    User user = userRepo.findByEmail(email)
+	            .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
+
+	    if (!user.getPassword().equals(password)) {
+	        throw new RuntimeException("Invalid credentials! Please check your email or password.");
+	    }
+
+	    return this.userToDto(user); // Convert User entity to UserDto
+	}
+
 
 	@Override
 	public UserDto updateUser(UserDto userDto, Integer userId) {

@@ -11,7 +11,8 @@ import com.codingwithsanket.blog.services.CatergoryService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categories")
+@CrossOrigin("*")
+@RequestMapping("/api/users/categories")
 public class CategoryController {
 
     @Autowired

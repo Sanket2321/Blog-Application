@@ -43,7 +43,7 @@ public class PostServiceimpl implements PostService {
 
 		Post post = this.modelMapper.map(postDto, Post.class);
 		post.setImageName("default.png");
-		post.setDate(new Date());
+		post.setAddedDate(new Date());
 		post.setUser(user);
 		post.setCategory(category);
 		Post newPost = this.postRepo.save(post);
@@ -61,7 +61,7 @@ public class PostServiceimpl implements PostService {
 		existingPost.setTitle(postDto.getTitle());
 		existingPost.setContent(postDto.getContent());
 		existingPost.setImageName(postDto.getImageName());
-		existingPost.setDate(new Date()); // Update the date to the current date
+		existingPost.setAddedDate(new Date()); // Update the date to the current date
 
 		// Save the updated post to the repository
 		Post updatedPost = this.postRepo.save(existingPost);

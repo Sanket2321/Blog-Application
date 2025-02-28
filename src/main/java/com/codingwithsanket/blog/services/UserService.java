@@ -17,4 +17,7 @@ public interface UserService {
 	List<UserDto> getAllUsers();
 
 	void deleteUser(Integer userId);
+
+	UserDto authenticateUser(String email, String password);
+
 }

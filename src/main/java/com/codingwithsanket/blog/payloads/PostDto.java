@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,8 +24,11 @@ public class PostDto {
 	private Date date;
 	private CategoryDto category;
 	private UserDto user;
-	private List<Comment> comments=new ArrayList<>();
-	
+
+	// when ever you get all post then all commnet gets
+
+	private List<Comment> comments = new ArrayList<>();
+
 //	
 
 }

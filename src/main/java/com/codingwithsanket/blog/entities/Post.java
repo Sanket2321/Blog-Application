@@ -32,7 +32,7 @@ public class Post {
 	@Column(length = 1000)
 	private String content;
 	private String imageName;
-	private Date date;
+	private Date addedDate;
 	// jab post add hoga to ye sochna he kisne add kiya and uski category kya he
 	@ManyToOne
 	private Category category;
